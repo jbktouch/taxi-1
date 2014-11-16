@@ -1,0 +1,5 @@
+ca/
+server/
+client-*
+user-data
+extfile.cnf

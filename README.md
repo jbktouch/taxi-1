@@ -27,7 +27,7 @@ cache:
     - .taxi-cache/
 
 install:
- - if [ ! -f .taxi-cache/taxi-$TAXI_VERSION ]; then wget $TAXI_URL -O .taxi-cache/taxi-$TAXI_VERSION; fi; cp .taxi-cache/taxi-$TAXI_VERSION ./taxi; chmod +x .taxi
+ - if [ ! -f .taxi-cache/taxi-$TAXI_VERSION ]; then wget $TAXI_URL -O .taxi-cache/taxi-$TAXI_VERSION; fi; cp .taxi-cache/taxi-$TAXI_VERSION ./taxi; chmod +x ./taxi
  - ./taxi install
 
 script:
