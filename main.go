@@ -30,7 +30,7 @@ func main() {
 	project.CertificatePath = MkAbsDir(".docker")
 	project.DockerHost = os.Getenv("DOCKER_HOST")
 	project.DockerPass = os.Getenv("DOCKER_PASS")
-	project.SkipFileTime = os.Getenv("TAXI_SKIP_FILETIME") == 1
+	project.SkipFileTime = os.Getenv("TAXI_SKIP_FILETIME") == "1"
 
 	if len(os.Args) == 1 {
 		print("please pass install or test or cleanup...\n")
