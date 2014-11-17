@@ -1,5 +1,7 @@
 package taxi
 
+import "fmt"
+
 type Context struct {
 	RootPath        string
 	ProjectName     string
@@ -21,6 +23,23 @@ func (context Context) Install() {
 		context.ForceFileTimes()
 	}
 	context.BuildContainer()
+}
+
+func (context Context) Describe() {
+	var passoverten string
+	if len(context.DockerPass) > 10 {
+		passoverten = "Yes"
+	} else {
+		passoverten = "No"
+	}
+
+	fmt.Printf("  Context:\n")
+	fmt.Printf("     Root:\t%s\n", context.RootPath)
+	fmt.Printf("     Name:\t%s\n", context.ProjectName)
+	fmt.Printf("    Cache:\t%s\n", context.CacheDirectory)
+	fmt.Printf("    Certs:\t%s\n", context.CertificatePath)
+	fmt.Printf("     Host:\t%s\n", context.DockerHost)
+	fmt.Printf("  Pass>10:\t%s\n", passoverten)
 }
 
 func (context Context) SecureDocker() {

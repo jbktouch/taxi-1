@@ -36,6 +36,9 @@ func main() {
 		print("please pass install or test or cleanup...\n")
 		print("prefferrably all of them, in seperate steps, and in that order.\n")
 
+		print("Info about your install:\n")
+		project.Describe()
+
 		os.Exit(1)
 	}
 
