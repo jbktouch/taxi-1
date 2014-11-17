@@ -1,0 +1,17 @@
+language: go
+cache:
+  directories:
+  - ".taxi-cache/"
+install:
+- go get -d -v ./... && go build -v ./...
+script:
+- go test ./taxi
+- go build main.go
+- ./main install
+- ./main test "exit 0"
+- ./main cleanup
+
+env:
+  global:
+  - DOCKER_HOST="tcp://docker-builds-us-west-2.cfy.io:2376"
+  - secure: taW5B36lIzFM+HMPtYMO8CiB1DOBrOpjeyacOYFuEcIowu1SZaA3C3iMU//o3kTl9vZMt6+mlNTslqb6XjaaQZ3Fh5niqRw9FJfVzXABdaEPjgo0DzQT1M3vmCwDSolgh6Jsd3fr3b6CMqTqayuYdXwrZo0gR/GF2vRG3qCzqiQ=
