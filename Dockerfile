@@ -1,1 +1,3 @@
-FROM golang:latest
+FROM debian:jessie
+
+ADD main /taxi
