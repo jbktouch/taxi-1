@@ -1,8 +1,10 @@
 package main
 
 import "os"
+import "fmt"
+import "math/rand"
 import "path/filepath"
-
+import "strings"
 import "github.com/grahamc/taxi/taxi"
 
 func check(e error) {
@@ -23,9 +25,53 @@ func MkAbsDir(path string) string {
 	return path
 }
 
-func main() {
+func TaxiBuildRepo() string {
+	name := os.Getenv("TAXI_REPO")
 
-	project := taxi.SetupContext(".", "test")
+	if name == "" {
+		name = os.Getenv("TRAVIS_REPO_SLUG")
+	}
+
+	if name == "" {
+		name = "test_build"
+	}
+
+	return name
+}
+
+func TaxiBuildId() string {
+	id := os.Getenv("TAXI_BUILD_ID")
+
+	if id == "" {
+		id = os.Getenv("TRAVIS_JOB_ID")
+	}
+
+	if id == "" {
+		id = fmt.Sprintf("%d", rand.Intn(1000))
+	}
+
+	return id
+}
+
+func TaxiBuildName() string {
+	return fmt.Sprintf("%s:%s", TaxiBuildRepo(), TaxiBuildId())
+}
+
+func TaxiContainerName() string {
+	name := TaxiBuildName()
+	name = strings.Replace(name, "/", ".", -1)
+	name = strings.Replace(name, ":", ".", -1)
+
+	return name
+}
+
+func main() {
+	if TaxiBuildRepo() == "test_build" {
+		println("Please define TAXI_REPO prior to running taxi.")
+		println("Using the name 'test_build' for now.")
+	}
+
+	project := taxi.SetupContext(".", TaxiContainerName())
 	project.CacheDirectory = MkAbsDir(".taxi-cache")
 	project.CertificatePath = MkAbsDir(".docker")
 	project.DockerHost = os.Getenv("DOCKER_HOST")
