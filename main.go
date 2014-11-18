@@ -61,6 +61,7 @@ func TaxiContainerName() string {
 	name := TaxiBuildName()
 	name = strings.Replace(name, "/", ".", -1)
 	name = strings.Replace(name, ":", ".", -1)
+	name = strings.ToLower(name)
 
 	return name
 }
