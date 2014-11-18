@@ -9,6 +9,10 @@ script:
 - go build main.go
 - ./main install
 - ./main test "exit 0"
+
+after_success:
+- ./main pushtag grahamc/taxi:latest
+after_script:
 - ./main cleanup
 
 env:
