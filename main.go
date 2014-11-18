@@ -89,6 +89,10 @@ func main() {
 
 	cmd := os.Args[1]
 
+	if cmd == "info" {
+		project.Describe()
+	}
+
 	if cmd == "install" {
 		project.Install()
 	}

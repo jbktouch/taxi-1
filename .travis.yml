@@ -10,7 +10,7 @@ script:
 - go test ./taxi
 - go build main.go
 - "./main install"
-- ./main test "exit 0"
+- ./main test "./taxi info"
 
 after_success:
 - ./main pushtag grahamc/taxi:latest
