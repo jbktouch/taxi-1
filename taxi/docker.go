@@ -61,6 +61,14 @@ func (c DockerContainer) DestroyCommand() *exec.Cmd {
 	return c.DockerHost.Command("rmi", "--force", c.Name)
 }
 
+func (c DockerContainer) TagCommand(tagname string) *exec.Cmd {
+	return c.DockerHost.Command("tag", c.Name, tagname)
+}
+
+func (c DockerContainer) PushCommand(tagname string) *exec.Cmd {
+	return c.DockerHost.Command("push", tagname)
+}
+
 func (c DockerContainer) UntagCommand() *exec.Cmd {
 	return c.DockerHost.Command("rmi", "--no-prune", "--force", c.Name)
 }

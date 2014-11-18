@@ -102,6 +102,15 @@ func main() {
 		project.TestContainer(os.Args[2])
 	}
 
+	if os.Args[1] == "pushtag" {
+		if len(os.Args) != 3 {
+			println("taxi pushtag internalserver:5000/repo/name:tag\n")
+			os.Exit(1)
+		}
+
+		project.PushAndTag(os.Args[2])
+	}
+
 	if os.Args[1] == "cleanup" {
 		project.DestroyContainer()
 	}

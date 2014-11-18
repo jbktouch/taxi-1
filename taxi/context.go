@@ -61,6 +61,11 @@ func (context Context) TestContainer(script string) {
 	RunCommand(context.Container().RunScriptCommand(script))
 }
 
+func (context Context) PushAndTag(tag string) {
+	RunCommand(context.Container().TagCommand(tag))
+	RunCommand(context.Container().PushCommand(tag))
+}
+
 func (context Context) DestroyContainer() {
 	RunCommand(context.Container().UntagCommand())
 }
