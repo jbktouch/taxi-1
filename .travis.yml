@@ -7,7 +7,7 @@ install:
 script:
 - go test ./taxi
 - go build main.go
-- ./main install
+- "./main install"
 - ./main test "exit 0"
 
 after_success:
@@ -18,4 +18,4 @@ after_script:
 env:
   global:
   - DOCKER_HOST="tcp://docker-builds-us-west-2.cfy.io:2376"
-  - secure: taW5B36lIzFM+HMPtYMO8CiB1DOBrOpjeyacOYFuEcIowu1SZaA3C3iMU//o3kTl9vZMt6+mlNTslqb6XjaaQZ3Fh5niqRw9FJfVzXABdaEPjgo0DzQT1M3vmCwDSolgh6Jsd3fr3b6CMqTqayuYdXwrZo0gR/GF2vRG3qCzqiQ=
+  - secure: EwGDkHdEoI1cgl5FCVqYRwt7oyH4JcwnOAaSYBQmqvX3fX8rN3jPVY1w3cydVSw2z+TGVNe9wtBMBQA4Nw9LMCZNXPZm6IV6lCL+r6d/7xI7RAI79UtKhVs5k2DYyR6LCj3u22RMvTcDcA9oDpz0o44oToeqb3jdfYAm13Ye/XE=
