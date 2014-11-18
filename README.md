@@ -15,7 +15,12 @@ minutes to 36 seconds.
 ## How
 
 Integrating Taxi into your TravisCI workflow is simple if you know all the right
-tricks. You probably don't. Here is what your .travis.yml might look like:
+tricks. You probably don't. There is a tool at
+`contrib/certificate_authority.sh` which will generate your certificate
+authority, docker server keys, and client keys. It will also generate a userdata
+script for a CoreOS node to run as your remote.
+
+Here is what your .travis.yml might look like:
 
 ```yaml
 env:
