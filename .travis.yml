@@ -2,6 +2,8 @@ language: go
 cache:
   directories:
   - ".taxi-cache/"
+before_install:
+  - openssl aes-256-cbc -K $encrypted_d4cd1c66d4ec_key -iv $encrypted_d4cd1c66d4ec_iv -in .dockercfg.enc -out .dockercfg -d
 install:
 - go get -d -v ./... && go build -v ./...
 script:
