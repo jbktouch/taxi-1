@@ -79,10 +79,9 @@ func main() {
 	project.SkipFileTime = os.Getenv("TAXI_SKIP_FILETIME") == "1"
 
 	if len(os.Args) == 1 {
-		print("please pass install or test or cleanup...\n")
-		print("prefferrably all of them, in seperate steps, and in that order.\n")
-
-		print("Info about your install:\n")
+		println("please pass install or test or cleanup...")
+		println("prefferrably all of them, in seperate steps, and in that order.")
+		println("Info about your install:")
 		project.Describe()
 
 		os.Exit(1)
