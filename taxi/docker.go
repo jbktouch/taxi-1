@@ -45,7 +45,7 @@ func (c DockerContainer) BuildCommand() *exec.Cmd {
 }
 
 func (c DockerContainer) RunCommand(command ...string) *exec.Cmd {
-	arguments := []string{"run", "-i", "-t", fmt.Sprintf("--name=%s-run", c.Name),
+	arguments := []string{"run", "-i", fmt.Sprintf("--name=%s-run", c.Name),
 		"--rm", c.Name}
 	arguments = append(arguments, command...)
 	cmd := c.DockerHost.Command(arguments...)

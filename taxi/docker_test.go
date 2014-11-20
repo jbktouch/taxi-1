@@ -89,7 +89,7 @@ func TestBuildCommand(t *testing.T) {
 func TestRunCommand(t *testing.T) {
 	c := ExampleContainer()
 
-	expected_args := []string{"run", "-i", "-t", "--name=my-name-run", "--rm",
+	expected_args := []string{"run", "-i", "--name=my-name-run", "--rm",
 		c.Name, "id", "-p"}
 	cmd := c.RunCommand("id", "-p")
 
@@ -101,7 +101,7 @@ func TestRunScriptCommand(t *testing.T) {
 
 	script := "pip install flake8; flake8 /test"
 
-	expected_args := []string{"run", "-i", "-t", "--name=my-name-run", "--rm",
+	expected_args := []string{"run", "-i", "--name=my-name-run", "--rm",
 		c.Name, "/bin/bash", "-c", script}
 	cmd := c.RunScriptCommand(script)
 
