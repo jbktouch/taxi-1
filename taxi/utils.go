@@ -15,6 +15,7 @@ func check(e error) {
 func RunCommand(cmd *exec.Cmd) {
 	fmt.Printf("Executing %q in %q\n", cmd.Args, cmd.Env)
 
+	cmd.Stdin = os.Stdin
 	cmd.Stdout = logwriter.New(log.New(os.Stdout, "stdout: ", log.Lshortfile))
 	cmd.Stderr = logwriter.New(log.New(os.Stdout, "stderr: ", log.Lshortfile))
 
