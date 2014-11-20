@@ -3,3 +3,4 @@ exec
 .gopath
 dist
 .taxi-*
+main
