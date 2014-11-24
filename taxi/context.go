@@ -58,7 +58,7 @@ func (context Context) BuildContainer() {
 }
 
 func (context Context) TestContainer(script string) {
-	RunCommand(context.Container().RunScriptCommand(script))
+	RunCommandTakeover(context.Container().RunScriptCommand(script))
 }
 
 func (context Context) PushAndTag(tag string) {

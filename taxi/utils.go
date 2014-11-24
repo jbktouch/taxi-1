@@ -21,3 +21,13 @@ func RunCommand(cmd *exec.Cmd) {
 
 	check(cmd.Run())
 }
+
+func RunCommandTakeover(cmd *exec.Cmd) {
+	fmt.Printf("Executing %q in %q\n", cmd.Args, cmd.Env)
+
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	check(cmd.Run())
+}
